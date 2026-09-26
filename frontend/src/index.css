@@ -1,0 +1,49 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Public Sans', ui-sans-serif, system-ui, sans-serif;
+
+  /* Paper, ink and rules: the palette of a printed log book. */
+  --color-paper: #f5f4ef;
+  --color-sheet: #ffffff;
+  --color-ink: #1c1b19;
+  --color-muted: #5d5a53;
+  --color-faint: #8a867d;
+  --color-rule: #d9d6cc;
+  --color-rule-strong: #1c1b19;
+  --color-accent: #b4410e;
+  --color-danger: #a4161a;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+@media print {
+  @page {
+    size: letter landscape;
+    margin: 0.35in;
+  }
+
+  body {
+    background: #ffffff;
+  }
+
+  .log-sheet {
+    break-after: page;
+    break-inside: avoid;
+  }
+
+  .log-sheet:last-child {
+    break-after: auto;
+  }
+}
