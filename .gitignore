@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+backend/db.sqlite3
+backend/staticfiles/
+
+# Node
+node_modules/
+frontend/dist/
+frontend/coverage/
+*.tsbuildinfo
+
+# Env
+.env
+
+# Local geocoding cache
+backend/.cache/
+.env.local
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/

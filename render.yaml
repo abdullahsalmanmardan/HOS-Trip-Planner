@@ -1,0 +1,26 @@
+# Render Blueprint: https://render.com/docs/blueprint-spec
+# New > Blueprint, pick this repo, and enter ORS_API_KEY when prompted.
+services:
+  - type: web
+    name: hos-trip-planner
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health/
+    autoDeploy: true
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: 'False'
+      # The service's own *.onrender.com hostname is added automatically. List custom domains here.
+      - key: ALLOWED_HOSTS
+        value: localhost
+      - key: ORS_API_KEY
+        sync: false
+      # Build args for the frontend. Empty keeps the API same-origin and the default map tiles.
+      - key: VITE_MAP_TILE_URL
+        sync: false
+      - key: VITE_MAP_TILE_ATTRIBUTION
+        sync: false

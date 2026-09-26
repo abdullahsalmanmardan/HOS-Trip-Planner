@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        VITE_API_URL: ${VITE_API_URL:-}
+        VITE_MAP_TILE_URL: ${VITE_MAP_TILE_URL:-}
+        VITE_MAP_TILE_ATTRIBUTION: ${VITE_MAP_TILE_ATTRIBUTION:-}
+    env_file: .env
+    ports:
+      - '${APP_PORT:-8000}:8000'
+    volumes:
+      # Geocoding cache: keeps lookups (and the daily quota) across rebuilds.
+      - geocode-cache:/app/.cache
+
+volumes:
+  geocode-cache:
